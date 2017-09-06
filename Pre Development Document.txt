@@ -1,1 +1,12 @@
 This is the text document where we list the things we want to include into our program and give detailed information about what we want the program to do.
+
+
+Visualized Product:
+When you first open the program you are met with a searchbox of the various supported currencies. You can then select one or multiple.
+if you select one you can always select more later or delete some from your list. 
+Each currency has a "brief view" showing the latest statistics, which can be expanded into a more detailed version.
+
+You can toggle desktop notifications about the value going up or down a certain amount in a given time. it would notify you if the current price is 
+within 5% of the 24-hour high or low so you can watch to buy/sell.
+
+
