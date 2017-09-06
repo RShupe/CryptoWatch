@@ -9,4 +9,6 @@ Each currency has a "brief view" showing the latest statistics, which can be exp
 You can toggle desktop notifications about the value going up or down a certain amount in a given time. it would notify you if the current price is 
 within 5% of the 24-hour high or low so you can watch to buy/sell.
 
+When you select the currencies you want to track the list will have the currrency name and icon for that currency
+
 
