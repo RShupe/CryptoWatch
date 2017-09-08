@@ -1,2 +1,9 @@
 ![alt text](https://github.com/IamWaffle/CryptoWatch/blob/master/Logo.png?raw=true)
-A program indev about watching crypto-currencies
+CryptoWatch is a program where you can get realtime statistics on many different crypto-currencies. 
+
+What will this program do?
+
+Choose from a list of supported currencies and you can see all the data/graphs from the past 24 hours. 
+You can toggle desktop notifications if the currency shows +% at a given time. 
+
+Developed by: GNUMan (pspslimboy), and Waffle (IamWaffle)
