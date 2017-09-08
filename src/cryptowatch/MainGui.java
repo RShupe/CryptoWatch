@@ -4,6 +4,8 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 public class MainGui extends javax.swing.JFrame {
 
@@ -178,9 +180,34 @@ public class MainGui extends javax.swing.JFrame {
         jList2.setModel(addButton);
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private static String OS = System.getProperty("os.name").toLowerCase();
+    
+    public static boolean isUnix() {
+        return (OS.indexOf("nix") >= 0 || OS.indexOf("nux") >= 0 || OS.indexOf("aix") > 0 );
+    }
     
     public static void main(String args[]) {
 
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            if (isUnix()) {
+                System.out.println("This is Unix or Linux");
+                UIManager.setLookAndFeel("com.sun.java.swing.plaf.gtk.GTKLookAndFeel");
+            }
+        }
+        catch (UnsupportedLookAndFeelException e) {
+            // handle exception
+        }
+        catch (ClassNotFoundException e) {
+            // handle exception
+        }
+        catch (InstantiationException e) {
+            // handle exception
+        }
+        catch (IllegalAccessException e) {
+            // handle exception
+        }
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new MainGui().setVisible(true);
