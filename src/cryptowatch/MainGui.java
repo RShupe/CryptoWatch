@@ -189,10 +189,11 @@ public class MainGui extends javax.swing.JFrame {
     public static void main(String args[]) {
 
         try {
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
             if (isUnix()) {
                 System.out.println("This is Unix or Linux");
                 UIManager.setLookAndFeel("com.sun.java.swing.plaf.gtk.GTKLookAndFeel");
+            } else {
+                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
             }
         }
         catch (UnsupportedLookAndFeelException e) {
