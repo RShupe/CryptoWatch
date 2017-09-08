@@ -1,5 +1,14 @@
 This is the text document where we list the things we want to include into our program and give detailed information about what we want the program to do.
 
+TODO LIST:
+Everything lmao
+ProperGui
+Selecting currency\getting live statistics 
+Save System
+Desktop Notifications
+Auto-refresh
+
+
 
 Visualized Product:
 When you first open the program you are met with a searchbox of the various supported currencies. You can then select one or multiple.
