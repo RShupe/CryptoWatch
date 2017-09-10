@@ -1,3 +1,5 @@
 nbproject/private/
 build/
 dist/
+lib/*
+!lib/README.md
