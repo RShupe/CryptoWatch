@@ -10,6 +10,11 @@ import javax.swing.JScrollPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import com.eclipsesource.json.*;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
 import org.apache.commons.io.IOUtils;
 
 public class MainGui extends javax.swing.JFrame {
@@ -183,6 +188,27 @@ public class MainGui extends javax.swing.JFrame {
         catch (IllegalAccessException e) {
             // handle exception
         }
+        
+        try {
+            URL url = new URL("https://bittrex.com/api/v1.1/public/getmarketsummary?market=btc-ltc");
+            URLConnection con = url.openConnection();
+            InputStream in = con.getInputStream();
+            String encoding = con.getContentEncoding();  // ** WRONG: should use "con.getContentType()" instead but it returns something like "text/html; charset=UTF-8" so this value must be parsed to extract the actual encoding
+            encoding = encoding == null ? "UTF-8" : encoding;
+            String body = IOUtils.toString(in, encoding);
+            System.out.println("Raw JSON: " + body + "\n");
+            JsonArray items = Json.parse(body).asObject().get("result").asArray();
+            for (JsonValue item : items) {
+                String market = item.asObject().getString("MarketName", "Unknown Item");
+                float volume = item.asObject().getFloat("Volume", 0);
+                float last = item.asObject().getFloat("Last", 0);
+                System.out.println("Market: " + market);
+                System.out.println("Volume: " + volume + " BTC");
+                System.out.println("Last Price: " + last + " BTC");
+            }
+        }
+        catch(MalformedURLException e) {}
+        catch(IOException e) {}
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
