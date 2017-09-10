@@ -189,6 +189,26 @@ public class MainGui extends javax.swing.JFrame {
             // handle exception
         }
         
+        System.out.println("Get currencies test:");
+        try {
+            URL url = new URL("https://bittrex.com/api/v1.1/public/getcurrencies");
+            URLConnection con = url.openConnection();
+            InputStream in = con.getInputStream();
+            String encoding = con.getContentEncoding();  // ** WRONG: should use "con.getContentType()" instead but it returns something like "text/html; charset=UTF-8" so this value must be parsed to extract the actual encoding
+            encoding = encoding == null ? "UTF-8" : encoding;
+            String body = IOUtils.toString(in, encoding);
+            //System.out.println("Raw JSON: " + body + "\n");
+            JsonArray items = Json.parse(body).asObject().get("result").asArray();
+            for (JsonValue item : items) {
+                String currency = item.asObject().getString("Currency", "Unknown Item");
+                String currencylong = item.asObject().getString("CurrencyLong", "Unknown Item");
+                System.out.println(currencylong + " (" + currency + ")");
+            }
+        }
+        catch(MalformedURLException e) {}
+        catch(IOException e) {}
+        
+        System.out.println("\nGet LTC stats test:");
         try {
             URL url = new URL("https://bittrex.com/api/v1.1/public/getmarketsummary?market=btc-ltc");
             URLConnection con = url.openConnection();
@@ -196,7 +216,7 @@ public class MainGui extends javax.swing.JFrame {
             String encoding = con.getContentEncoding();  // ** WRONG: should use "con.getContentType()" instead but it returns something like "text/html; charset=UTF-8" so this value must be parsed to extract the actual encoding
             encoding = encoding == null ? "UTF-8" : encoding;
             String body = IOUtils.toString(in, encoding);
-            System.out.println("Raw JSON: " + body + "\n");
+            //System.out.println("Raw JSON: " + body + "\n");
             JsonArray items = Json.parse(body).asObject().get("result").asArray();
             for (JsonValue item : items) {
                 String market = item.asObject().getString("MarketName", "Unknown Item");
