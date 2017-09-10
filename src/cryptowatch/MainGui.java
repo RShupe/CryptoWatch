@@ -10,6 +10,7 @@ import javax.swing.JScrollPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import com.eclipsesource.json.*;
+import org.apache.commons.io.IOUtils;
 
 public class MainGui extends javax.swing.JFrame {
 
@@ -182,8 +183,6 @@ public class MainGui extends javax.swing.JFrame {
         catch (IllegalAccessException e) {
             // handle exception
         }
-        
-        
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

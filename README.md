@@ -3,6 +3,7 @@ CryptoWatch is a program where you can get realtime statistics on many different
 
 ## Libraries
 - [minimal-json](https://github.com/ralfstx/minimal-json)
+- [Apache Commons-IO](https://commons.apache.org/io/)
 
 What will this program do?
 
