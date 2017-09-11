@@ -10,4 +10,6 @@ What will this program do?
 Choose from a list of supported currencies and you can see all the data/graphs from the past 24 hours. 
 You can toggle desktop notifications if the currency shows +% at a given time. 
 
+You need a stable Internet connection to use CryptoWatch effectivly.
+
 Developed by: GNUman (pspslimboy), and Waffle (IamWaffle)
