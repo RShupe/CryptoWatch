@@ -4,7 +4,6 @@ import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.io.InputStream;
 import java.io.IOException;
-import static java.lang.System.out;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.MalformedURLException;
@@ -44,10 +43,10 @@ public class Main {
             pw.close();
         }
         catch (IOException e){
-            out.println("ERROR CREATING FILE");
+            System.out.println("ERROR CREATING FILE");
         }
         
-        out.println("\nGet LTC stats test:");
+        System.out.println("\nGet LTC stats test:");
         try {
             URL url = new URL("https://bittrex.com/api/v1.1/public/getmarketsummary?market=btc-ltc");
             URLConnection con = url.openConnection();
