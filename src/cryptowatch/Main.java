@@ -67,6 +67,9 @@ public class Main {
         }
         catch(MalformedURLException e) {}
         catch(IOException e) {}
+        
+        System.out.println("\nGet LTC stats test #2:");
+        System.out.println("LTC Price: " + Market.getPrice("bittrex", "btc-ltc") + " BTC");
      
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
