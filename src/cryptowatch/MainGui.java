@@ -51,8 +51,8 @@ public class MainGui extends javax.swing.JFrame {
     }
     
     ImageIcon btcIcon = new ImageIcon("bitcoin.png");
-    @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+
+
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -180,7 +180,7 @@ public class MainGui extends javax.swing.JFrame {
     public static void main(String[] args){
     }
     
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -190,6 +190,6 @@ public class MainGui extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     public javax.swing.JTable jTable1;
-    // End of variables declaration//GEN-END:variables
+
 
 }
