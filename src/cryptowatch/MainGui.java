@@ -12,6 +12,7 @@ import com.eclipsesource.json.*;
 import org.apache.commons.io.IOUtils;
 
 import javax.swing.ImageIcon;
+import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -21,15 +22,17 @@ public class MainGui extends javax.swing.JFrame {
         initComponents();
         this.setLocation(300, 100);
         initialize();
-        
+    }
+     
+    public static void main(String[] args){
     }
     
     private void initialize(){
         
         this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("cw.png")));
         
-        DefaultListModel curlist = new DefaultListModel();
-        try {
+        DefaultTableModel curlist = new DefaultTableModel();
+        /* try {
             URL url = new URL("https://bittrex.com/api/v1.1/public/getcurrencies");
             URLConnection con = url.openConnection();
             InputStream in = con.getInputStream();
@@ -48,9 +51,8 @@ public class MainGui extends javax.swing.JFrame {
         catch(MalformedURLException e) {}
         catch(IOException e) {}
         jList1.setModel(curlist);
+    */
     }
-    
-    ImageIcon btcIcon = new ImageIcon("bitcoin.png");
 
 
     private void initComponents() {
@@ -105,7 +107,7 @@ public class MainGui extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, btcIcon, "Bitcoin", "BTC"}
+                {null, new ImageIcon("lolol"), "Bitcoin", "BTC"}
             },
             new String [] {
                 "", "", "Currency", ""
@@ -127,6 +129,7 @@ public class MainGui extends javax.swing.JFrame {
             }
         });
         jScrollPane2.setViewportView(jTable1);
+        
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -168,19 +171,14 @@ public class MainGui extends javax.swing.JFrame {
         );
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
-
-    DefaultListModel addButton = new DefaultListModel();
+    }// </editor-fold>                        
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         //Logs Selected Currencies to a file.
         System.out.println("I'm supposed to save this");
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    public static void main(String[] args){
-    }
     
-
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

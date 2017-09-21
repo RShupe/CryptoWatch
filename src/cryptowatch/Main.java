@@ -24,6 +24,12 @@ public class Main {
     public static void main(String args[]) {
         Market.startTimer();
         
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new MainGui().setVisible(true);
+            }
+        });
+        
         try {
             if (isUnix()) {
                 System.out.println("This is Unix or Linux");
@@ -71,18 +77,14 @@ public class Main {
         catch(MalformedURLException e) {}
         catch(IOException e) {}
         
-        
-        System.out.println("\nGet LTC stats test #2:");
         try {
             Thread.sleep(5000);
         } catch(InterruptedException e) {}
+        System.out.println("\nGet LTC stats test #2:");
         System.out.println("LTC Price: " + Market.getPrice("bittrex", "btc-ltc") + " BTC");
         
      
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MainGui().setVisible(true);
-            }
-        });
+
+        
     }
 }
