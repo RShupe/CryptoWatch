@@ -24,11 +24,6 @@ public class Main {
     public static void main(String args[]) {
         Market.startTimer();
         
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MainGui().setVisible(true);
-            }
-        });
         
         try {
             if (isUnix()) {
