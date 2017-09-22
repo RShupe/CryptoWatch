@@ -1,6 +1,6 @@
 ![alt text](https://github.com/IamWaffle/CryptoWatch/blob/master/Logo.png?raw=true)
 
-##EARLY DEVELOPMENT
+## EARLY DEVELOPMENT
 
 CryptoWatch is a program where you can get realtime statistics on many different crypto-currencies. 
 
