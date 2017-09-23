@@ -9,37 +9,49 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.Objects;
+import java.util.Timer;
+import java.util.TimerTask;
 import org.apache.commons.io.IOUtils;
 
 public class Market {
+    static JsonArray arrayBittrex;
+    
+    public static void startTimer(){
+        Timer timer = new Timer();
+        timer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                String url = "https://bittrex.com/api/v1.1/public/getmarketsummaries";
+                try {
+                    URL url2 = new URL(url);
+                    URLConnection con = url2.openConnection();
+                    InputStream in = con.getInputStream();
+                    String encoding = "UTF-8";
+                    String rawBittrex = IOUtils.toString(in, encoding);
+                    arrayBittrex = Json.parse(rawBittrex).asObject().get("result").asArray();
+                }
+                catch(MalformedURLException e) {}
+                catch(IOException e) {}
+                
+                System.out.println("BTC: " + getPrice("bittrex", "usdt-btc") + " USD");
+                System.out.println("ETH: " + getPrice("bittrex", "btc-eth") + " BTC");
+                System.out.println("LTC: " + getPrice("bittrex", "btc-ltc") + " BTC");
+                System.out.println("ZEC: " + getPrice("bittrex", "btc-zec") + " BTC");
+                System.out.println();
+            }
+        }, 0,5000);
+    }
     
     public static float getPrice(String exchange, String market) {
-        String url = "";
-        if(Objects.equals(exchange, "bittrex")){
-            url = ("https://bittrex.com/api/v1.1/public/getmarketsummary?market=" + market);
-        }
-        
-        /* This code will be moved out and will refer to a different function when a timer is working.
-           The above URL in that timer-based JSON-getting will have most info that we need for this class (and the program)
-           i.e. https://bittrex.com/api/v1.1/public/getmarketsummaries */
-        try {
-            URL url2 = new URL(url);
-            URLConnection con = url2.openConnection();
-            InputStream in = con.getInputStream();
-            String encoding = con.getContentEncoding();  // ** WRONG: should use "con.getContentType()" instead but it returns something like "text/html; charset=UTF-8" so this value must be parsed to extract the actual encoding
-            encoding = encoding == null ? "UTF-8" : encoding;
-            String body = IOUtils.toString(in, encoding);
-            JsonArray items = Json.parse(body).asObject().get("result").asArray();
-            
-            // I'm not sure a for loop is the best for a single value but maybe it's the only way to read arrays?
-            for (JsonValue item : items) {
-                float last = item.asObject().getFloat("Last", 0);
-                return last;
+        if(exchange.equals("bittrex")) {
+            int numArrays = arrayBittrex.size();
+            for(int i=0; i<numArrays; i++){
+                if(market.equalsIgnoreCase(arrayBittrex.get(i).asObject().getString("MarketName", ""))) {
+                    float last = arrayBittrex.get(i).asObject().getFloat("Last", 0);
+                    return last;
+                }
             }
         }
-        catch(MalformedURLException e) {}
-        catch(IOException e) {}
-        
         return 0;
-    }
+    } 
 }
