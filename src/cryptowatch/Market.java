@@ -14,7 +14,7 @@ import java.util.TimerTask;
 import org.apache.commons.io.IOUtils;
 
 public class Market {
-    static String rawBittrex;
+    static JsonArray arrayBittrex;
     
     public static void startTimer(){
         Timer timer = new Timer();
@@ -27,7 +27,8 @@ public class Market {
                     URLConnection con = url2.openConnection();
                     InputStream in = con.getInputStream();
                     String encoding = "UTF-8";
-                    rawBittrex = IOUtils.toString(in, encoding);
+                    String rawBittrex = IOUtils.toString(in, encoding);
+                    arrayBittrex = Json.parse(rawBittrex).asObject().get("result").asArray();
                 }
                 catch(MalformedURLException e) {}
                 catch(IOException e) {}
@@ -37,9 +38,7 @@ public class Market {
     
     public static float getPrice(String exchange, String market) {
         if(exchange.equals("bittrex")) {
-            JsonArray arrayBittrex = Json.parse(rawBittrex).asObject().get("result").asArray();
-            int numArrays = Json.parse(rawBittrex).asObject().get("result").asArray().size();
-
+            int numArrays = arrayBittrex.size();
             for(int i=0; i<numArrays; i++){
                 if(market.equalsIgnoreCase(arrayBittrex.get(i).asObject().getString("MarketName", ""))) {
                     float last = arrayBittrex.get(i).asObject().getFloat("Last", 0);
