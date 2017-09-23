@@ -72,12 +72,14 @@ public class Main {
         catch(IOException e) {}
         
         
-        System.out.println("\nGet LTC stats test #2:");
+        System.out.println("\nGet coin prices with timer test:");
         try {
             Thread.sleep(5000);
         } catch(InterruptedException e) {}
-        System.out.println("LTC Price: " + Market.getPrice("bittrex", "btc-ltc") + " BTC");
-        
+        System.out.println("BTC: " + Market.getPrice("bittrex", "usdt-btc") + " USD");
+        System.out.println("ETH: " + Market.getPrice("bittrex", "btc-eth") + " BTC");
+        System.out.println("LTC: " + Market.getPrice("bittrex", "btc-ltc") + " BTC");
+        System.out.println("ZEC: " + Market.getPrice("bittrex", "btc-zec") + " BTC");
      
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
