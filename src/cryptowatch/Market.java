@@ -32,6 +32,12 @@ public class Market {
                 }
                 catch(MalformedURLException e) {}
                 catch(IOException e) {}
+                
+                System.out.println("BTC: " + getPrice("bittrex", "usdt-btc") + " USD");
+                System.out.println("ETH: " + getPrice("bittrex", "btc-eth") + " BTC");
+                System.out.println("LTC: " + getPrice("bittrex", "btc-ltc") + " BTC");
+                System.out.println("ZEC: " + getPrice("bittrex", "btc-zec") + " BTC");
+                System.out.println();
             }
         }, 0,5000);
     }
