@@ -3,3 +3,4 @@ build/
 dist/
 lib/*
 !lib/README.md
+/.metadata/

@@ -24,6 +24,7 @@ public class Main {
     public static void main(String args[]) {
         Market.startTimer();
         
+        
         try {
             if (isUnix()) {
                 System.out.println("This is Unix or Linux");
@@ -72,11 +73,5 @@ public class Main {
         catch(IOException e) {}
         
         System.out.println("\nGet coin prices with timer test:");
-     
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MainGui().setVisible(true);
-            }
-        });
     }
 }
