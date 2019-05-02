@@ -72,6 +72,14 @@ public class Main {
         catch(MalformedURLException e) {}
         catch(IOException e) {}
         
-        System.out.println("\nGet coin prices with timer test:");
+        try {
+            Thread.sleep(5000);
+        } catch(InterruptedException e) {}
+        System.out.println("\nGet LTC stats test #2:");
+        System.out.println("LTC Price: " + Market.getPrice("bittrex", "btc-ltc") + " BTC");
+        
+     
+
+        
     }
 }

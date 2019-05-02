@@ -21,3 +21,4 @@ within 5% of the 24-hour high or low so you can watch to buy/sell.
 When you select the currencies you want to track the list will have the currrency name and icon for that currency
 You will also be able to watch markets (BTC/USDT or LTC/BTC) on several different exchanges
 
+
